@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Reusable empty state view.
+  Include this in any screen that has a RecyclerView:
+    <include layout="@layout/layout_empty_state" android:id="@+id/layout_empty_state" ... />
+  Then set visibility to VISIBLE when the list is empty.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingTop="32dp"
+    android:paddingBottom="32dp"
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="📋"
+        android:textSize="52sp"
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_complaints_yet"
+        android:textColor="@color/text_primary"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="6dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_complaints_desc"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp"
+        android:gravity="center"/>
+
+</LinearLayout>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- Blue Header -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="@drawable/bg_blue_gradient"
+        android:orientation="horizontal" android:padding="20dp" android:gravity="center_vertical">
+
+        <LinearLayout android:layout_width="36dp" android:layout_height="36dp"
+            android:background="@drawable/bg_rounded_white" android:gravity="center">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🛡" android:textSize="18sp"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Admin Panel" android:textColor="#B3FFFFFF" android:textSize="12sp"/>
+            <TextView android:id="@+id/tv_admin_name"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Admin" android:textColor="@color/white"
+                android:textSize="17sp" android:textStyle="bold"/>
+        </LinearLayout>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="🔔" android:textSize="22sp" android:layout_marginEnd="8dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="⚙️" android:textSize="22sp"/>
+    </LinearLayout>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp">
+
+            <!-- Analytics Overview -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:text="Analytics Overview"
+                    android:textColor="@color/text_primary" android:textSize="16sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="This Week ▼" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+            </LinearLayout>
+
+            <!-- Stats Grid 2x2 -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:layout_marginBottom="8dp">
+                <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="80dp"
+                    android:layout_weight="1" app:cardCornerRadius="12dp" app:cardElevation="2dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/tv_total_count" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="0"
+                            android:textColor="@color/primary_blue" android:textSize="22sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Total Complaints" android:textColor="@color/text_secondary" android:textSize="10sp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="80dp"
+                    android:layout_weight="1" app:cardCornerRadius="12dp" app:cardElevation="2dp"
+                    android:layout_marginStart="8dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/tv_pending_count" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="0"
+                            android:textColor="@color/status_pending" android:textSize="22sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Pending" android:textColor="@color/text_secondary" android:textSize="10sp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:layout_marginBottom="16dp">
+                <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="80dp"
+                    android:layout_weight="1" app:cardCornerRadius="12dp" app:cardElevation="2dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/tv_progress_count" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="0"
+                            android:textColor="@color/status_progress" android:textSize="22sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="In Progress" android:textColor="@color/text_secondary" android:textSize="10sp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="80dp"
+                    android:layout_weight="1" app:cardCornerRadius="12dp" app:cardElevation="2dp"
+                    android:layout_marginStart="8dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:orientation="vertical" android:gravity="center">
+                        <TextView android:id="@+id/tv_completed_count" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="0"
+                            android:textColor="@color/status_completed" android:textSize="22sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Completed" android:textColor="@color/text_secondary" android:textSize="10sp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- By Category -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Complaints by Category" android:textColor="@color/text_primary"
+                android:textSize="15sp" android:textStyle="bold" android:layout_marginBottom="10dp"/>
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:cardCornerRadius="12dp"
+                app:cardElevation="2dp" android:layout_marginBottom="16dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="16dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="10dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="⚡ Electricity" android:textColor="@color/text_primary"
+                            android:textSize="13sp" android:layout_weight="1"/>
+                        <TextView android:id="@+id/tv_elec_count" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="0"
+                            android:textColor="@color/primary_blue" android:textSize="15sp" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="10dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="📶 WiFi" android:textColor="@color/text_primary"
+                            android:textSize="13sp" android:layout_weight="1"/>
+                        <TextView android:id="@+id/tv_wifi_count" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="0"
+                            android:textColor="@color/primary_blue" android:textSize="15sp" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical"
+                        android:layout_marginBottom="10dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="💧 Water" android:textColor="@color/text_primary"
+                            android:textSize="13sp" android:layout_weight="1"/>
+                        <TextView android:id="@+id/tv_water_count" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="0"
+                            android:textColor="@color/primary_blue" android:textSize="15sp" android:textStyle="bold"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="🧹 Cleaning" android:textColor="@color/text_primary"
+                            android:textSize="13sp" android:layout_weight="1"/>
+                        <TextView android:id="@+id/tv_clean_count" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:text="0"
+                            android:textColor="@color/primary_blue" android:textSize="15sp" android:textStyle="bold"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Recent Complaints with filter -->
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1" android:text="Recent Complaints"
+                    android:textColor="@color/text_primary" android:textSize="15sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="View All" android:textColor="@color/primary_blue" android:textSize="13sp"/>
+            </LinearLayout>
+
+            <!-- Filter row -->
+            <HorizontalScrollView android:layout_width="match_parent" android:layout_height="40dp"
+                android:scrollbars="none" android:layout_marginBottom="10dp">
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent"
+                    android:orientation="horizontal" android:gravity="center_vertical">
+                    <TextView android:id="@+id/chip_all"
+                        android:layout_width="wrap_content" android:layout_height="32dp"
+                        android:text="All" android:textSize="12sp" android:textStyle="bold"
+                        android:gravity="center" android:paddingStart="16dp" android:paddingEnd="16dp"
+                        android:background="@color/primary_blue" android:textColor="@color/white"/>
+                    <TextView android:id="@+id/chip_pending"
+                        android:layout_width="wrap_content" android:layout_height="32dp"
+                        android:text="Pending" android:textSize="12sp"
+                        android:gravity="center" android:paddingStart="16dp" android:paddingEnd="16dp"
+                        android:textColor="@color/text_primary" android:layout_marginStart="8dp"/>
+                    <TextView android:id="@+id/chip_progress"
+                        android:layout_width="wrap_content" android:layout_height="32dp"
+                        android:text="In Progress" android:textSize="12sp"
+                        android:gravity="center" android:paddingStart="16dp" android:paddingEnd="16dp"
+                        android:textColor="@color/text_primary" android:layout_marginStart="8dp"/>
+                    <TextView android:id="@+id/chip_completed"
+                        android:layout_width="wrap_content" android:layout_height="32dp"
+                        android:text="Completed" android:textSize="12sp"
+                        android:gravity="center" android:paddingStart="16dp" android:paddingEnd="16dp"
+                        android:textColor="@color/text_primary" android:layout_marginStart="8dp"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <ProgressBar android:id="@+id/progress_bar"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_gravity="center" android:visibility="gone"/>
+
+            <androidx.recyclerview.widget.RecyclerView android:id="@+id/rv_complaints"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
+
+            <!-- Empty state — shown when no complaints match filter -->
+            <LinearLayout
+                android:id="@+id/layout_empty_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="32dp"
+                android:paddingBottom="24dp"
+                android:visibility="gone">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="📋" android:textSize="48sp" android:layout_marginBottom="8dp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/no_admin_complaints"
+                    android:textColor="@color/text_primary" android:textSize="16sp"
+                    android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/no_admin_complaints_desc"
+                    android:textColor="@color/text_secondary" android:textSize="12sp"
+                    android:gravity="center" android:paddingStart="16dp" android:paddingEnd="16dp"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:menu="@menu/admin_nav_menu"
+        app:itemIconTint="@color/bottom_nav_selector"
+        app:itemTextColor="@color/bottom_nav_selector"
+        app:labelVisibilityMode="labeled"/>
+
+</LinearLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ── App Identity ────────────────────────────────────────── -->
+    <string name="app_name">UniSafe</string>
+    <string name="app_tagline">University Maintenance</string>
+
+    <!-- ── Auth Screens ────────────────────────────────────────── -->
+    <string name="get_started">Get Started</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email Address</string>
+    <string name="password">Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone">Phone Number</string>
+    <string name="student_id">Student ID</string>
+    <string name="block">Block</string>
+    <string name="room_number">Room Number</string>
+    <string name="student">Student</string>
+
+    <!-- ── Navigation ───────────────────────────────────────────── -->
+    <string name="dashboard">Dashboard</string>
+    <string name="complaints">Complaints</string>
+    <string name="profile">Profile</string>
+
+    <!-- ── Complaints ───────────────────────────────────────────── -->
+    <string name="create_complaint">Create Complaint</string>
+    <string name="complaint_categories">Complaint Categories</string>
+    <string name="pending">Pending</string>
+    <string name="in_progress">In Progress</string>
+    <string name="completed">Completed</string>
+    <string name="submit_complaint">Submit Complaint</string>
+    <string name="complaint_submitted">Complaint submitted successfully!</string>
+    <string name="not_assigned">Not assigned yet</string>
+    <string name="status_updated">Status updated successfully!</string>
+
+    <!-- ── Admin ────────────────────────────────────────────────── -->
+    <string name="admin_actions">Admin Actions</string>
+    <string name="mark_in_progress">Mark In Progress</string>
+    <string name="mark_completed">Mark Completed</string>
+    <string name="reject_complaint">Reject</string>
+    <string name="admin_note_hint">Add a note for the student (optional)</string>
+
+    <!-- ── Image Picker ─────────────────────────────────────────── -->
+    <string name="take_photo">Take Photo</string>
+    <string name="choose_gallery">Choose from Gallery</string>
+    <string name="attach_image">Attach Image</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- ── Empty States ─────────────────────────────────────────── -->
+    <string name="no_complaints_yet">No Complaints Yet</string>
+    <string name="no_complaints_desc">Tap the + button to submit your first complaint.</string>
+    <string name="no_admin_complaints">No Complaints Found</string>
+    <string name="no_admin_complaints_desc">No complaints match the selected filter.</string>
+
+    <!-- ── Dialogs ──────────────────────────────────────────────── -->
+    <string name="exit_app">Exit App</string>
+    <string name="exit_app_message">Are you sure you want to exit?</string>
+    <string name="exit">Exit</string>
+    <string name="logout">Logout</string>
+    <string name="logout_confirm_message">Are you sure you want to logout?</string>
+    <string name="admin_exit_message">Do you want to logout and exit?</string>
+
+    <!-- ── Format Strings ───────────────────────────────────────── -->
+    <!-- Usage: getString(R.string.room_info_format, room, block) -->
+    <string name="room_info_format">Room %1$s, %2$s</string>
+    <!-- Usage: getString(R.string.error_wrong_role, role) -->
+    <string name="error_wrong_role">Wrong role selected. You are a \'%1$s\'. Please select the correct role.</string>
+
+    <!-- ── Validation Errors ─────────────────────────────────────── -->
+    <string name="error_required">This field is required</string>
+    <string name="error_invalid_email">Please enter a valid email address</string>
+    <string name="error_invalid_phone">Please enter a valid 10-digit phone number</string>
+    <string name="error_password_short">Password must be at least 6 characters</string>
+    <string name="error_room_number">Room number must be numeric (e.g. 204)</string>
+    <string name="error_select_gender">Please select your gender</string>
+    <string name="error_select_block">Please select your block</string>
+    <string name="error_select_category">Please select a complaint category first</string>
+
+    <!-- ── Network / Firebase Errors ──────────────────────────────── -->
+    <string name="error_login_failed">Login failed. Please check your credentials.</string>
+    <string name="error_load_stats">Failed to load statistics. Check your connection.</string>
+    <string name="error_load_complaints">Failed to load complaints. Check your connection.</string>
+    <string name="error_submit_complaint">Failed to submit complaint. Please try again.</string>
+    <string name="error_update_status">Failed to update status. Please try again.</string>
+    <string name="error_camera_permission">Camera permission denied. Please grant it in Settings.</string>
+    <string name="error_camera_open">Unable to open camera. Please try again.</string>
+
+    <!-- ── Misc ─────────────────────────────────────────────────── -->
+    <string name="reset_email_sent">Password reset email sent. Check your inbox.</string>
+</resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.unisafe">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <!-- SEND_SMS removed: the app uses an email Intent, not SMS. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+            <data android:mimeType="message/rfc822" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.UniSafe"
+        android:usesCleartextTraffic="false">
+
+        <activity
+            android:name=".activities.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.UniSafe.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activities.LoginActivity" android:exported="false" android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".activities.SignupActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.DashboardActivity" android:exported="false"/>
+        <activity android:name=".activities.CategoriesActivity" android:exported="false"/>
+        <activity android:name=".activities.CreateComplaintActivity" android:exported="false" android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".activities.ComplaintListActivity" android:exported="false"/>
+        <activity android:name=".activities.ComplaintStatusActivity" android:exported="false"/>
+        <activity android:name=".activities.AdminDashboardActivity" android:exported="false"/>
+        <activity android:name=".activities.ProfileActivity" android:exported="false"/>
+        <activity android:name=".MainActivity" android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+    </application>
+</manifest>
