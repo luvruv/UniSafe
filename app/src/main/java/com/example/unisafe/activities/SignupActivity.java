@@ -73,7 +73,7 @@ public class SignupActivity extends AppCompatActivity {
 
         spBlock.setAdapter(new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line,
-                new String[]{"Block A", "Block B", "Block C", "Block D", "Block E"}));
+                new String[]{"Tower 1", "Tower 2", "Tower 3", "Tower 4", "Girls Hostel 1", "Girls Hostel 2"}));
     }
 
     private void setListeners() {

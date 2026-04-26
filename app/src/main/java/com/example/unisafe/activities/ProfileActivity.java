@@ -126,6 +126,7 @@ public class ProfileActivity extends AppCompatActivity {
                 .setTitle(getString(R.string.logout))
                 .setMessage(getString(R.string.logout_confirm_message))
                 .setPositiveButton(getString(R.string.logout), (d, w) -> {
+                    android.widget.Toast.makeText(this, getString(R.string.logging_out), android.widget.Toast.LENGTH_SHORT).show();
                     FirebaseAuth.getInstance().signOut();
                     sessionManager.logout();
                     Intent intent = new Intent(this, LoginActivity.class);

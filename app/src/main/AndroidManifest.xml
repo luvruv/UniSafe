@@ -10,7 +10,6 @@
         android:maxSdkVersion="28"/>
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
     <!-- SEND_SMS removed: the app uses an email Intent, not SMS. -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <uses-feature android:name="android.hardware.camera" android:required="false"/>
 

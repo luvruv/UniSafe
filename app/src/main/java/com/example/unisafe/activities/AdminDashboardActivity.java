@@ -108,7 +108,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
             int id = item.getItemId();
             if (id == R.id.nav_home)        return true;
             else if (id == R.id.nav_complaints) {
-                applyFilter("all");
+                startActivity(new Intent(this, ComplaintListActivity.class));
                 return true;
             } else if (id == R.id.nav_profile) {
                 startActivity(new Intent(this, ProfileActivity.class));
@@ -239,6 +239,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
                 .setTitle(getString(R.string.exit_app))
                 .setMessage(getString(R.string.admin_exit_message))
                 .setPositiveButton(getString(R.string.logout), (d, w) -> {
+                    android.widget.Toast.makeText(this, getString(R.string.logging_out), android.widget.Toast.LENGTH_SHORT).show();
                     sessionManager.logout();
                     Intent intent = new Intent(this, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -246,5 +247,10 @@ public class AdminDashboardActivity extends AppCompatActivity {
                 })
                 .setNegativeButton(getString(R.string.cancel), null)
                 .show();
+    }
+
+    /** Called by android:onClick="seeAllComplaints" on the dashboard XML. */
+    public void seeAllComplaints(View v) {
+        startActivity(new Intent(this, ComplaintListActivity.class));
     }
 }

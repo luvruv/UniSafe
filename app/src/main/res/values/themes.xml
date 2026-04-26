@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.UniSafe" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <!-- Base application theme. -->
+    <style name="Theme.UniSafe" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primary_blue</item>
-        <item name="colorPrimaryDark">@color/primary_dark_blue</item>
-        <item name="colorAccent">@color/accent_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/primary_light_blue</item>
+        <item name="colorOnPrimaryContainer">@color/primary_dark_blue</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/accent_blue</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/primary_blue</item>
+        <item name="android:windowLightStatusBar">false</item>
+        
         <item name="android:windowBackground">@color/background</item>
-        <item name="android:statusBarColor">@color/primary_dark_blue</item>
     </style>
 
     <style name="Theme.UniSafe.Splash" parent="Theme.UniSafe">
@@ -13,28 +24,32 @@
         <item name="android:statusBarColor">@color/primary_blue</item>
     </style>
 
-    <style name="BlueButton" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/primary_blue</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="cornerRadius">12dp</item>
-        <item name="android:textSize">16sp</item>
+    <!-- Premium Button Styles -->
+    <style name="BlueButton" parent="Widget.Material3.Button">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.UniSafe.Medium</item>
         <item name="android:paddingTop">14dp</item>
         <item name="android:paddingBottom">14dp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
-    <style name="OutlineButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+    <style name="OutlineButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.UniSafe.Medium</item>
         <item name="strokeColor">@color/primary_blue</item>
         <item name="android:textColor">@color/primary_blue</item>
-        <item name="cornerRadius">12dp</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:paddingTop">14dp</item>
-        <item name="android:paddingBottom">14dp</item>
     </style>
 
-    <style name="CardStyle" parent="Widget.MaterialComponents.CardView">
-        <item name="cardCornerRadius">16dp</item>
-        <item name="cardElevation">2dp</item>
-        <item name="cardBackgroundColor">@color/white</item>
+    <!-- Custom Shapes -->
+    <style name="ShapeAppearance.UniSafe.Medium" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSize">16dp</item>
     </style>
+
+    <style name="ShapeAppearance.UniSafe.Large" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerSize">24dp</item>
+    </style>
+
 </resources>

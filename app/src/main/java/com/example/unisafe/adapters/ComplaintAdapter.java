@@ -91,7 +91,7 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.View
     // ─── Helpers ──────────────────────────────────────────────────────────────
 
     private int getCategoryBg(String category) {
-        if (TextUtils.isEmpty(category)) return R.color.light_blue;
+        if (TextUtils.isEmpty(category)) return R.color.primary_light_blue;
         switch (category.toLowerCase()) {
             case "electricity":        return R.color.electricity_bg;
             case "wifi":
@@ -101,7 +101,7 @@ public class ComplaintAdapter extends RecyclerView.Adapter<ComplaintAdapter.View
             case "cleaning":
             case "cleaning & hygiene": return R.color.cleaning_bg;
             case "maintenance":        return R.color.maintenance_bg;
-            default:                   return R.color.light_blue;
+            default:                   return R.color.primary_light_blue;
         }
     }
 

@@ -17,7 +17,7 @@ import com.example.unisafe.models.Complaint;
 import com.example.unisafe.utils.AppConstants;
 import com.example.unisafe.utils.SessionManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -26,14 +26,14 @@ import java.util.List;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    private TextView              tvUserName, tvRoomInfo, tvPending, tvProgress, tvCompleted;
+    private TextView              tvUserName, tvPending, tvProgress, tvCompleted;
     private RecyclerView          rvRecentComplaints;
     private LinearLayout          layoutEmptyState;
     private ComplaintAdapter      adapter;
     private final List<Complaint> complaintList = new ArrayList<>();
     private FirebaseFirestore     db;
     private SessionManager        sessionManager;
-    private FloatingActionButton  fabCreate;
+    private ExtendedFloatingActionButton  fabCreate;
     private BottomNavigationView  bottomNav;
 
     @Override
@@ -55,7 +55,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     private void initViews() {
         tvUserName          = findViewById(R.id.tv_user_name);
-        tvRoomInfo          = findViewById(R.id.tv_room_info);
+
         tvPending           = findViewById(R.id.tv_pending_count);
         tvProgress          = findViewById(R.id.tv_progress_count);
         tvCompleted         = findViewById(R.id.tv_completed_count);
@@ -113,7 +113,7 @@ public class DashboardActivity extends AppCompatActivity {
         String room  = sessionManager.getUserRoom();
         String block = sessionManager.getUserBlock();
         tvUserName.setText(name.isEmpty() ? getString(R.string.student) : name);
-        tvRoomInfo.setText(getString(R.string.room_info_format, room, block));
+
     }
 
     private void loadStats() {
@@ -148,8 +148,6 @@ public class DashboardActivity extends AppCompatActivity {
 
         db.collection(AppConstants.COLLECTION_COMPLAINTS)
                 .whereEqualTo(AppConstants.FIELD_USER_ID, userId)
-                .orderBy(AppConstants.FIELD_TIMESTAMP) // using existing string field for compat
-                .limitToLast(5)
                 .get()
                 .addOnSuccessListener(docs -> {
                     complaintList.clear();
@@ -157,8 +155,18 @@ public class DashboardActivity extends AppCompatActivity {
                         Complaint c = doc.toObject(Complaint.class);
                         if (c != null) {
                             c.setId(doc.getId());
-                            complaintList.add(0, c); // reverse for descending order
+                            complaintList.add(c);
                         }
+                    }
+                    // Sort descending by timestamp (newest first)
+                    complaintList.sort((c1, c2) -> {
+                        String t1 = c1.getTimestamp() != null ? c1.getTimestamp() : "";
+                        String t2 = c2.getTimestamp() != null ? c2.getTimestamp() : "";
+                        return t2.compareTo(t1);
+                    });
+                    // Keep only top 5 recent complaints
+                    if (complaintList.size() > 5) {
+                        complaintList.subList(5, complaintList.size()).clear();
                     }
                     adapter.notifyDataSetChanged();
                     updateEmptyState();

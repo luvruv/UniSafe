@@ -7,59 +7,57 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_blue_gradient">
 
-    <!-- Decorative circles -->
+    <!-- Decorative Soft Blobs -->
     <View
-        android:id="@+id/circle1"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:alpha="0.15"
+        android:id="@+id/blob1"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:alpha="0.2"
         android:background="@drawable/bg_circle_blue"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="-60dp"
-        android:layout_marginStart="-60dp"/>
+        android:layout_marginTop="-100dp"
+        android:layout_marginStart="-100dp"/>
 
     <View
-        android:id="@+id/circle2"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:alpha="0.1"
+        android:id="@+id/blob2"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:alpha="0.15"
         android:background="@drawable/bg_circle_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="-40dp"
-        android:layout_marginEnd="-40dp"/>
+        android:layout_marginBottom="-80dp"
+        android:layout_marginEnd="-80dp"/>
 
     <!-- Center content -->
     <LinearLayout
         android:id="@+id/center_layout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
+        android:padding="32dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/bottom_layout"
+        app:layout_constraintVertical_chainStyle="packed">
 
-        <!-- Logo Container -->
-        <FrameLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center">
-            <View
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:alpha="0.25"
-                android:background="@drawable/bg_circle_blue"/>
+        <!-- Animated Logo Container (Visual only for now) -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="12dp"
+            app:cardBackgroundColor="@color/white"
+            app:strokeWidth="0dp">
             <ImageView
                 android:id="@+id/iv_logo"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_logo"
-                android:tint="@color/white"/>
-        </FrameLayout>
+                app:tint="@color/primary_blue"/>
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/tv_app_name"
@@ -67,95 +65,86 @@
             android:layout_height="wrap_content"
             android:text="UniSafe"
             android:textColor="@color/white"
-            android:textSize="32sp"
+            android:textSize="40sp"
             android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-medium"/>
+            android:layout_marginTop="24dp"
+            android:fontFamily="sans-serif-black"/>
 
         <TextView
             android:id="@+id/tv_tagline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="University Maintenance"
-            android:textColor="#B3FFFFFF"
-            android:textSize="14sp"
-            android:layout_marginTop="4dp"/>
+            android:text="Campus Care, Simplified."
+            android:textColor="#CCFFFFFF"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:letterSpacing="0.05"/>
 
-        <!-- Feature icons row -->
+        <!-- Features Row with Glass effect -->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="48dp"
             android:gravity="center">
 
             <LinearLayout
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:background="#33FFFFFF"
-                android:padding="10dp">
+                android:background="@drawable/bg_glass_white"
+                android:padding="16dp">
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="⚡" android:textSize="24sp"/>
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Quick" android:textColor="@color/white"
-                    android:textSize="10sp" android:layout_marginTop="4dp"/>
-                <TextView android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Resolution" android:textColor="@color/white"
-                    android:textSize="10sp"/>
+                    android:text="Fast" android:textColor="@color/white"
+                    android:textSize="12sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:background="#33FFFFFF"
-                android:padding="10dp"
+                android:background="@drawable/bg_glass_white"
+                android:padding="16dp"
                 android:layout_marginStart="12dp">
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="🔔" android:textSize="24sp"/>
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Real-time" android:textColor="@color/white"
-                    android:textSize="10sp" android:layout_marginTop="4dp"/>
-                <TextView android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Updates" android:textColor="@color/white"
-                    android:textSize="10sp"/>
+                    android:text="Alerts" android:textColor="@color/white"
+                    android:textSize="12sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:background="#33FFFFFF"
-                android:padding="10dp"
+                android:background="@drawable/bg_glass_white"
+                android:padding="16dp"
                 android:layout_marginStart="12dp">
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="🔒" android:textSize="24sp"/>
                 <TextView android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Secure &amp;" android:textColor="@color/white"
-                    android:textSize="10sp" android:layout_marginTop="4dp"/>
-                <TextView android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Private" android:textColor="@color/white"
-                    android:textSize="10sp"/>
+                    android:text="Secure" android:textColor="@color/white"
+                    android:textSize="12sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
             </LinearLayout>
-
         </LinearLayout>
 
     </LinearLayout>
 
-    <!-- Bottom buttons -->
+    <!-- Bottom Actions -->
     <LinearLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
@@ -167,13 +156,14 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_get_started"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="64dp"
             android:text="Get Started"
             android:textColor="@color/primary_blue"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:backgroundTint="@color/white"
-            app:cornerRadius="12dp"/>
+            app:cornerRadius="20dp"
+            app:elevation="8dp"/>
 
         <TextView
             android:id="@+id/tv_sign_in_link"
@@ -181,19 +171,23 @@
             android:layout_height="wrap_content"
             android:text="Already have an account? Sign In"
             android:textColor="#B3FFFFFF"
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:gravity="center"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="20dp"
+            android:padding="8dp"
+            android:clickable="true"
+            android:focusable="true"/>
 
         <TextView
             android:id="@+id/tv_version"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Version 1.0.0"
+            android:text="V 2.0 PREMIUM"
             android:textColor="#66FFFFFF"
-            android:textSize="11sp"
+            android:textSize="10sp"
             android:gravity="center"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="24dp"
+            android:letterSpacing="0.2"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

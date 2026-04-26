@@ -45,6 +45,10 @@
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="Student ID: STU2024001" android:textColor="#B3FFFFFF"
                 android:textSize="13sp"/>
+            <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="@string/university_name" android:textColor="#80FFFFFF"
+                android:textSize="11sp" android:layout_marginTop="2dp"/>
         </LinearLayout>
     </LinearLayout>
 

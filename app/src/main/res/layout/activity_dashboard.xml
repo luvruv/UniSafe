@@ -12,217 +12,384 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- Blue Header -->
+        <!-- Modern Header -->
         <LinearLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_blue_gradient"
             android:orientation="horizontal"
-            android:padding="20dp"
+            android:padding="24dp"
             android:gravity="center_vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_profile"
-                android:layout_width="44dp"
-                android:layout_height="44dp"
-                android:src="@android:drawable/ic_menu_myplaces"
-                android:background="@color/accent_blue"/>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                app:cardCornerRadius="26dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="2dp"
+                app:strokeColor="#40FFFFFF"
+                app:cardBackgroundColor="@android:color/transparent">
+                <ImageView
+                    android:id="@+id/iv_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_logo"
+                    android:scaleType="centerInside"
+                    android:padding="8dp"
+                    app:tint="@color/white"/>
+            </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:layout_marginStart="12dp">
+                android:layout_marginStart="16dp">
 
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Hello," android:textColor="#B3FFFFFF" android:textSize="12sp"/>
-                <TextView android:id="@+id/tv_user_name"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Rahul Sharma" android:textColor="@color/white"
-                    android:textSize="17sp" android:textStyle="bold"/>
-                <TextView android:id="@+id/tv_room_info"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:text="Room 204, Block A" android:textColor="#B3FFFFFF" android:textSize="12sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/university_name"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:alpha="0.8"
+                    android:layout_marginBottom="2dp"/>
+                <TextView
+                    android:id="@+id/tv_greeting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Good Morning,"
+                    android:textColor="#B3FFFFFF"
+                    android:textSize="13sp"/>
+                <TextView
+                    android:id="@+id/tv_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rahul Sharma"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/iv_notification"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:src="@android:drawable/stat_notify_more"
-                android:tint="@color/white"/>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_notification"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#26FFFFFF">
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@android:drawable/stat_notify_more"
+                    app:tint="@color/white"/>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:fillViewport="true">
+            android:fillViewport="true"
+            android:paddingBottom="120dp"
+            android:clipToPadding="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="20dp">
 
-                <!-- Stats Row -->
+                <!-- Bento Stats Grid -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp">
+
+                    <!-- Pending Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_pending"
+                        android:layout_width="0dp"
+                        android:layout_height="160dp"
+                        app:cardCornerRadius="24dp"
+                        app:cardElevation="2dp"
+                        app:strokeWidth="0dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/column2_top">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="20dp"
+                            android:gravity="bottom">
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="⏳" android:textSize="28sp"
+                                android:layout_marginBottom="12dp"/>
+                            <TextView android:id="@+id/tv_pending_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="@color/status_pending"
+                                android:textSize="32sp"
+                                android:textStyle="bold"/>
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pending"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/column2_top"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.45"/>
+
+                    <!-- In Progress Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_progress"
+                        android:layout_width="0dp"
+                        android:layout_height="75dp"
+                        android:layout_marginStart="12dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="2dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/column2_top"
+                        app:layout_constraintEnd_toEndOf="parent">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:padding="16dp"
+                            android:gravity="center_vertical">
+                            <TextView android:id="@+id/tv_progress_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="@color/status_progress"
+                                android:textSize="24sp"
+                                android:textStyle="bold"/>
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="In Progress"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp"
+                                android:layout_marginStart="12dp"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Completed Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_completed"
+                        android:layout_width="0dp"
+                        android:layout_height="75dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="2dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:layout_constraintTop_toBottomOf="@id/card_progress"
+                        app:layout_constraintStart_toEndOf="@id/column2_top"
+                        app:layout_constraintEnd_toEndOf="parent">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:padding="16dp"
+                            android:gravity="center_vertical">
+                            <TextView android:id="@+id/tv_completed_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textColor="@color/status_completed"
+                                android:textSize="24sp"
+                                android:textStyle="bold"/>
+                            <TextView android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Completed"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="12sp"
+                                android:layout_marginStart="12dp"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Categories Section -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="20dp">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp" android:layout_height="80dp"
-                        android:layout_weight="1" app:cardCornerRadius="12dp"
-                        app:cardElevation="2dp" app:cardBackgroundColor="@color/white">
-                        <LinearLayout android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical" android:gravity="center">
-                            <TextView android:id="@+id/tv_pending_count"
-                                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="0" android:textColor="@color/status_pending"
-                                android:textSize="24sp" android:textStyle="bold"/>
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="Pending" android:textColor="@color/text_secondary"
-                                android:textSize="11sp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp" android:layout_height="80dp"
-                        android:layout_weight="1" app:cardCornerRadius="12dp"
-                        app:cardElevation="2dp" app:cardBackgroundColor="@color/white"
-                        android:layout_marginStart="10dp">
-                        <LinearLayout android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical" android:gravity="center">
-                            <TextView android:id="@+id/tv_progress_count"
-                                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="0" android:textColor="@color/status_progress"
-                                android:textSize="24sp" android:textStyle="bold"/>
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="In Progress" android:textColor="@color/text_secondary"
-                                android:textSize="11sp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp" android:layout_height="80dp"
-                        android:layout_weight="1" app:cardCornerRadius="12dp"
-                        app:cardElevation="2dp" app:cardBackgroundColor="@color/white"
-                        android:layout_marginStart="10dp">
-                        <LinearLayout android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical" android:gravity="center">
-                            <TextView android:id="@+id/tv_completed_count"
-                                android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="0" android:textColor="@color/status_completed"
-                                android:textSize="24sp" android:textStyle="bold"/>
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="Completed" android:textColor="@color/text_secondary"
-                                android:textSize="11sp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                </LinearLayout>
-
-                <!-- Categories Section -->
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="horizontal" android:gravity="center_vertical"
-                    android:layout_marginBottom="12dp">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1" android:text="Complaint Categories"
-                        android:textColor="@color/text_primary" android:textSize="16sp" android:textStyle="bold"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="View All" android:textColor="@color/primary_blue"
-                        android:textSize="13sp" android:clickable="true" android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+                    <TextView android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Quick Report"
+                        android:textColor="@color/text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View All"
+                        android:textColor="@color/primary_blue"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
                         android:onClick="viewAllCategories"/>
                 </LinearLayout>
 
-                <!-- Category Cards -->
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="horizontal" android:layout_marginBottom="20dp">
+                <!-- Horizontal Categories -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:layout_marginBottom="32dp">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="8dp">
 
-                    <androidx.cardview.widget.CardView android:id="@+id/card_cat_electricity"
-                        android:layout_width="0dp" android:layout_height="80dp"
-                        android:layout_weight="1" app:cardCornerRadius="12dp" app:cardElevation="2dp"
-                        app:cardBackgroundColor="@color/white" android:clickable="true" android:focusable="true">
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                            android:orientation="vertical" android:gravity="center">
-                            <TextView android:layout_width="32dp" android:layout_height="32dp"
-                                android:text="⚡" android:textSize="20sp" android:gravity="center"
-                                android:background="@color/electricity_bg"/>
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="Electricity" android:textColor="@color/text_primary"
-                                android:textSize="10sp" android:layout_marginTop="4dp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card_cat_electricity"
+                            android:layout_width="100dp"
+                            android:layout_height="110dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="1dp"
+                            app:cardBackgroundColor="@color/white">
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:padding="12dp">
+                                <View android:layout_width="44dp" android:layout_height="44dp"
+                                    android:background="@drawable/bg_circle_blue"
+                                    android:backgroundTint="@color/electricity_bg"/>
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="⚡" android:textSize="20sp"
+                                    android:layout_marginTop="-40dp"/>
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Electricity"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="16dp"/>
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
 
-                    <androidx.cardview.widget.CardView android:id="@+id/card_cat_wifi"
-                        android:layout_width="0dp" android:layout_height="80dp"
-                        android:layout_weight="1" app:cardCornerRadius="12dp" app:cardElevation="2dp"
-                        app:cardBackgroundColor="@color/white" android:layout_marginStart="8dp"
-                        android:clickable="true" android:focusable="true">
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                            android:orientation="vertical" android:gravity="center">
-                            <TextView android:layout_width="32dp" android:layout_height="32dp"
-                                android:text="📶" android:textSize="20sp" android:gravity="center"
-                                android:background="@color/wifi_bg"/>
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="WiFi" android:textColor="@color/text_primary"
-                                android:textSize="10sp" android:layout_marginTop="4dp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card_cat_wifi"
+                            android:layout_width="100dp"
+                            android:layout_height="110dp"
+                            android:layout_marginStart="12dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="1dp"
+                            app:cardBackgroundColor="@color/white">
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:padding="12dp">
+                                <View android:layout_width="44dp" android:layout_height="44dp"
+                                    android:background="@drawable/bg_circle_blue"
+                                    android:backgroundTint="@color/wifi_bg"/>
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="📶" android:textSize="20sp"
+                                    android:layout_marginTop="-40dp"/>
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="WiFi"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="16dp"/>
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
 
-                    <androidx.cardview.widget.CardView android:id="@+id/card_cat_water"
-                        android:layout_width="0dp" android:layout_height="80dp"
-                        android:layout_weight="1" app:cardCornerRadius="12dp" app:cardElevation="2dp"
-                        app:cardBackgroundColor="@color/white" android:layout_marginStart="8dp"
-                        android:clickable="true" android:focusable="true">
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                            android:orientation="vertical" android:gravity="center">
-                            <TextView android:layout_width="32dp" android:layout_height="32dp"
-                                android:text="💧" android:textSize="20sp" android:gravity="center"
-                                android:background="@color/water_bg"/>
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="Water" android:textColor="@color/text_primary"
-                                android:textSize="10sp" android:layout_marginTop="4dp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card_cat_water"
+                            android:layout_width="100dp"
+                            android:layout_height="110dp"
+                            android:layout_marginStart="12dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="1dp"
+                            app:cardBackgroundColor="@color/white">
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:padding="12dp">
+                                <View android:layout_width="44dp" android:layout_height="44dp"
+                                    android:background="@drawable/bg_circle_blue"
+                                    android:backgroundTint="@color/water_bg"/>
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="💧" android:textSize="20sp"
+                                    android:layout_marginTop="-40dp"/>
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Water"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="16dp"/>
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
 
-                    <androidx.cardview.widget.CardView android:id="@+id/card_cat_cleaning"
-                        android:layout_width="0dp" android:layout_height="80dp"
-                        android:layout_weight="1" app:cardCornerRadius="12dp" app:cardElevation="2dp"
-                        app:cardBackgroundColor="@color/white" android:layout_marginStart="8dp"
-                        android:clickable="true" android:focusable="true">
-                        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                            android:orientation="vertical" android:gravity="center">
-                            <TextView android:layout_width="32dp" android:layout_height="32dp"
-                                android:text="🧹" android:textSize="20sp" android:gravity="center"
-                                android:background="@color/cleaning_bg"/>
-                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                android:text="Cleaning" android:textColor="@color/text_primary"
-                                android:textSize="10sp" android:layout_marginTop="4dp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/card_cat_cleaning"
+                            android:layout_width="100dp"
+                            android:layout_height="110dp"
+                            android:layout_marginStart="12dp"
+                            app:cardCornerRadius="20dp"
+                            app:cardElevation="1dp"
+                            app:cardBackgroundColor="@color/white">
+                            <LinearLayout android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:padding="12dp">
+                                <View android:layout_width="44dp" android:layout_height="44dp"
+                                    android:background="@drawable/bg_circle_blue"
+                                    android:backgroundTint="@color/cleaning_bg"/>
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="🧹" android:textSize="20sp"
+                                    android:layout_marginTop="-40dp"/>
+                                <TextView android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cleaning"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="16dp"/>
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
 
-                </LinearLayout>
+                    </LinearLayout>
+                </HorizontalScrollView>
 
-                <!-- Recent Complaints -->
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="horizontal" android:gravity="center_vertical"
-                    android:layout_marginBottom="12dp">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
-                        android:layout_weight="1" android:text="Recent Complaints"
-                        android:textColor="@color/text_primary" android:textSize="16sp" android:textStyle="bold"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="See All" android:textColor="@color/primary_blue"
-                        android:textSize="13sp" android:clickable="true" android:focusable="true"
-                        android:onClick="seeAllComplaints"/>
-                </LinearLayout>
+                <!-- Recent Activity -->
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recent Complaints"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_recent_complaints"
@@ -230,38 +397,22 @@
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"/>
 
-                <!-- Empty state — shown when student has no complaints -->
-                <LinearLayout
+                <!-- Empty state -->
+                <include
                     android:id="@+id/layout_empty_state"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:paddingTop="24dp"
-                    android:paddingBottom="16dp"
-                    android:visibility="gone">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="📋" android:textSize="48sp" android:layout_marginBottom="8dp"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="@string/no_complaints_yet"
-                        android:textColor="@color/text_primary" android:textSize="16sp"
-                        android:textStyle="bold"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="@string/no_complaints_desc"
-                        android:textColor="@color/text_secondary" android:textSize="12sp"
-                        android:gravity="center" android:paddingStart="16dp" android:paddingEnd="16dp"
-                        android:layout_marginTop="4dp"/>
-                </LinearLayout>
+                    layout="@layout/layout_empty_state"
+                    android:visibility="gone"/>
 
             </LinearLayout>
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
-        <!-- Bottom Navigation -->
+        <!-- Modern Bottom Navigation -->
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
+            app:elevation="16dp"
             app:menu="@menu/bottom_nav_menu"
             app:itemIconTint="@color/bottom_nav_selector"
             app:itemTextColor="@color/bottom_nav_selector"
@@ -269,14 +420,17 @@
 
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fab_create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="88dp"
-        android:src="@android:drawable/ic_input_add"
-        app:backgroundTint="@color/primary_blue"
-        app:tint="@color/white"/>
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="88dp"
+        android:text="Create Complaint"
+        android:textColor="@color/white"
+        app:icon="@android:drawable/ic_input_add"
+        app:iconTint="@color/white"
+        app:backgroundTint="@color/primary_blue"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

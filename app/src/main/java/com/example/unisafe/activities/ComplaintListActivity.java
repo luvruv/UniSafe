@@ -117,15 +117,18 @@ public class ComplaintListActivity extends AppCompatActivity {
     private void loadComplaints() {
         progressBar.setVisibility(View.VISIBLE);
         String userId = sessionManager.getUserId();
+        String role   = sessionManager.getUserRole();
         if (userId.isEmpty()) {
             progressBar.setVisibility(View.GONE);
             return;
         }
 
-        db.collection(AppConstants.COLLECTION_COMPLAINTS)
-                .whereEqualTo(AppConstants.FIELD_USER_ID, userId)
-                .orderBy(AppConstants.FIELD_TIMESTAMP)
-                .get()
+        com.google.firebase.firestore.Query query = db.collection(AppConstants.COLLECTION_COMPLAINTS);
+        if (!AppConstants.ROLE_ADMIN.equals(role)) {
+            query = query.whereEqualTo(AppConstants.FIELD_USER_ID, userId);
+        }
+
+        query.get()
                 .addOnSuccessListener(docs -> {
                     progressBar.setVisibility(View.GONE);
                     allComplaints.clear();
@@ -133,9 +136,15 @@ public class ComplaintListActivity extends AppCompatActivity {
                         Complaint c = doc.toObject(Complaint.class);
                         if (c != null) {
                             c.setId(doc.getId());
-                            allComplaints.add(0, c); // reverse — descending
+                            allComplaints.add(c);
                         }
                     }
+                    // Sort descending by timestamp (newest first)
+                    allComplaints.sort((c1, c2) -> {
+                        String t1 = c1.getTimestamp() != null ? c1.getTimestamp() : "";
+                        String t2 = c2.getTimestamp() != null ? c2.getTimestamp() : "";
+                        return t2.compareTo(t1);
+                    });
                     applyFilter(currentFilter);
                 })
                 .addOnFailureListener(e -> {

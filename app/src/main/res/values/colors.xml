@@ -1,41 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- ── Brand ───────────────────────────────────────────────── -->
-    <color name="primary_blue">#1A56DB</color>
-    <color name="primary_dark_blue">#1E3A8A</color>
-    <color name="light_blue">#EFF6FF</color>
-    <color name="accent_blue">#3B82F6</color>
-
-    <!-- ── Neutrals ─────────────────────────────────────────────── -->
+    <!-- ── Brand Modern ────────────────────────────────────────── -->
+    <color name="primary_blue">#2563EB</color>
+    <color name="primary_dark_blue">#1E40AF</color>
+    <color name="primary_light_blue">#DBEAFE</color>
+    <color name="accent_blue">#60A5FA</color>
+    
+    <!-- ── Premium Neutrals ────────────────────────────────────── -->
     <color name="white">#FFFFFF</color>
     <color name="background">#F8FAFC</color>
     <color name="card_bg">#FFFFFF</color>
-    <color name="divider">#E2E8F0</color>
-    <color name="text_primary">#1E293B</color>
-    <color name="text_secondary">#64748B</color>
+    <color name="divider">#F1F5F9</color>
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#475569</color>
     <color name="text_hint">#94A3B8</color>
 
-    <!-- ── Complaint Status ──────────────────────────────────────── -->
+    <!-- ── Dynamic Status (Vibrant) ────────────────────────────── -->
     <color name="status_pending">#F59E0B</color>
+    <color name="status_pending_bg">#FEF3C7</color>
     <color name="status_progress">#3B82F6</color>
+    <color name="status_progress_bg">#EFF6FF</color>
     <color name="status_completed">#10B981</color>
+    <color name="status_completed_bg">#D1FAE5</color>
     <color name="status_rejected">#EF4444</color>
+    <color name="status_rejected_bg">#FEE2E2</color>
 
-    <!-- ── Category Backgrounds ─────────────────────────────────── -->
-    <color name="electricity_bg">#FEF3C7</color>
-    <color name="wifi_bg">#EFF6FF</color>
-    <color name="water_bg">#E0F2FE</color>
-    <color name="cleaning_bg">#F3E8FF</color>
-    <color name="maintenance_bg">#FFE4E6</color>
+    <!-- ── Category Soft UI ────────────────────────────────────── -->
+    <color name="electricity_bg">#FFF7ED</color>
+    <color name="electricity_icon">#F97316</color>
+    <color name="wifi_bg">#F0F9FF</color>
+    <color name="wifi_icon">#0EA5E9</color>
+    <color name="water_bg">#ECFEFF</color>
+    <color name="water_icon">#06B6D4</color>
+    <color name="cleaning_bg">#F5F3FF</color>
+    <color name="cleaning_icon">#8B5CF6</color>
+    <color name="maintenance_bg">#FFF1F2</color>
+    <color name="maintenance_icon">#F43F5E</color>
 
-    <!-- ── Filter Chips ──────────────────────────────────────────── -->
-    <color name="chip_selected_bg">#1A56DB</color>
-    <color name="chip_selected_text">#FFFFFF</color>
+    <!-- ── UI Elements ─────────────────────────────────────────── -->
+    <color name="chip_selected_bg">#2563EB</color>
     <color name="chip_unselected_bg">#F1F5F9</color>
-    <color name="chip_unselected_text">#64748B</color>
-
-    <!-- ── Error / Warning ──────────────────────────────────────── -->
+    <color name="input_stroke">#E2E8F0</color>
+    <color name="input_focused_stroke">#2563EB</color>
+    
+    <!-- ── System ──────────────────────────────────────────────── -->
     <color name="error_red">#EF4444</color>
-    <color name="warning_amber">#F59E0B</color>
     <color name="success_green">#10B981</color>
+    <color name="warning_yellow">#F59E0B</color>
 </resources>

@@ -222,7 +222,7 @@ public class CreateComplaintActivity extends AppCompatActivity {
     private void selectCategory(String category) {
         selectedCategory = category;
         int normal   = ContextCompat.getColor(this, R.color.background);
-        int selected = ContextCompat.getColor(this, R.color.light_blue);
+        int selected = ContextCompat.getColor(this, R.color.primary_light_blue);
 
         tvCatElec.setBackgroundColor(normal);
         tvCatWifi.setBackgroundColor(normal);
