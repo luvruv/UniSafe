@@ -59,7 +59,9 @@ public class SessionManager {
                 .putString(KEY_USER_ID,    userId   != null ? userId   : "")
                 .putString(KEY_USER_NAME,  name     != null ? name     : "")
                 .putString(KEY_USER_EMAIL, email    != null ? email    : "")
-                .putString(KEY_USER_ROLE,  role     != null ? role     : AppConstants.ROLE_STUDENT)
+                .putString(KEY_USER_ROLE,  AppConstants.normalizeRole(role).isEmpty()
+                        ? AppConstants.ROLE_STUDENT
+                        : AppConstants.normalizeRole(role))
                 .putString(KEY_USER_BLOCK, block    != null ? block    : "")
                 .putString(KEY_USER_ROOM,  room     != null ? room     : "")
                 .putString(KEY_STUDENT_ID, studentId != null ? studentId : "")
@@ -71,7 +73,7 @@ public class SessionManager {
     }
 
     public boolean isAdmin() {
-        return AppConstants.ROLE_ADMIN.equals(getUserRole());
+        return AppConstants.isAdminRole(getUserRole());
     }
 
     // ─── Null-safe getters ─────────────────────────────────────────────────────
@@ -79,7 +81,11 @@ public class SessionManager {
     public String getUserId()    { return pref.getString(KEY_USER_ID,    ""); }
     public String getUserName()  { return pref.getString(KEY_USER_NAME,  ""); }
     public String getUserEmail() { return pref.getString(KEY_USER_EMAIL, ""); }
-    public String getUserRole()  { return pref.getString(KEY_USER_ROLE,  AppConstants.ROLE_STUDENT); }
+    public String getUserRole()  {
+        return AppConstants.normalizeRole(
+                pref.getString(KEY_USER_ROLE, AppConstants.ROLE_STUDENT)
+        );
+    }
     public String getUserBlock() { return pref.getString(KEY_USER_BLOCK, ""); }
     public String getUserRoom()  { return pref.getString(KEY_USER_ROOM,  ""); }
     public String getStudentId() { return pref.getString(KEY_STUDENT_ID, ""); }

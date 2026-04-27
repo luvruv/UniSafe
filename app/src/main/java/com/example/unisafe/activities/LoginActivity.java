@@ -13,6 +13,7 @@ import com.example.unisafe.utils.AppConstants;
 import com.example.unisafe.utils.SessionManager;
 import com.example.unisafe.utils.ValidationUtils;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private TextInputEditText etEmail, etPassword;
     private MaterialButton    btnSignIn, btnStudent, btnAdmin;
+    private MaterialButtonToggleGroup toggleRole;
     private TextView          tvSignUp, tvForgot;
     private FirebaseAuth      mAuth;
     private FirebaseFirestore db;
@@ -58,21 +60,32 @@ public class LoginActivity extends AppCompatActivity {
         btnSignIn   = findViewById(R.id.btn_sign_in);
         btnStudent  = findViewById(R.id.btn_student);
         btnAdmin    = findViewById(R.id.btn_admin);
+        toggleRole  = findViewById(R.id.toggle_role);
         tvSignUp    = findViewById(R.id.tv_sign_up);
         tvForgot    = findViewById(R.id.tv_forgot);
         progressBar = findViewById(R.id.progress_bar);
     }
 
     private void setListeners() {
-        btnStudent.setOnClickListener(v -> {
-            selectedRole = AppConstants.ROLE_STUDENT;
-            highlightRoleButton(AppConstants.ROLE_STUDENT);
+        toggleRole.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
+            if (!isChecked) return;
+            if (checkedId == R.id.btn_admin) {
+                selectedRole = AppConstants.ROLE_ADMIN;
+                highlightRoleButton(AppConstants.ROLE_ADMIN);
+            } else {
+                selectedRole = AppConstants.ROLE_STUDENT;
+                highlightRoleButton(AppConstants.ROLE_STUDENT);
+            }
         });
 
-        btnAdmin.setOnClickListener(v -> {
+        int checkedId = toggleRole.getCheckedButtonId();
+        if (checkedId == R.id.btn_admin) {
             selectedRole = AppConstants.ROLE_ADMIN;
             highlightRoleButton(AppConstants.ROLE_ADMIN);
-        });
+        } else {
+            selectedRole = AppConstants.ROLE_STUDENT;
+            highlightRoleButton(AppConstants.ROLE_STUDENT);
+        }
 
         btnSignIn.setOnClickListener(v -> loginUser());
 
@@ -119,14 +132,15 @@ public class LoginActivity extends AppCompatActivity {
                     setLoading(false);
                     if (doc.exists()) {
                         String name      = doc.getString("name");
-                        String role      = doc.getString(AppConstants.FIELD_ROLE);
+                        String role      = AppConstants.normalizeRole(doc.getString(AppConstants.FIELD_ROLE));
                         String block     = doc.getString("block");
                         String room      = doc.getString("roomNumber");
                         String studentId = doc.getString("studentId");
+                        String expectedRole = AppConstants.normalizeRole(selectedRole);
 
                         // ✅ Role mismatch — friendly message with actual role
-                        if (!selectedRole.equals(role)) {
-                            showSnackbar(getString(R.string.error_wrong_role, role));
+                        if (!expectedRole.equals(role)) {
+                            showSnackbar(getString(R.string.error_wrong_role, role.isEmpty() ? getString(R.string.student) : role));
                             mAuth.signOut();
                             setLoading(false);
                             return;
@@ -175,7 +189,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void navigateByRole(String role) {
-        Intent intent = AppConstants.ROLE_ADMIN.equals(role)
+        Intent intent = AppConstants.isAdminRole(role)
                 ? new Intent(this, AdminDashboardActivity.class)
                 : new Intent(this, DashboardActivity.class);
         startActivity(intent);

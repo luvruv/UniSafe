@@ -136,10 +136,11 @@ public class DashboardActivity extends AppCompatActivity {
                     tvCompleted.setText(String.valueOf(completed));
                 })
                 .addOnFailureListener(e ->
+                        {
                         Snackbar.make(fabCreate,
                                 getString(R.string.error_load_stats),
-                                Snackbar.LENGTH_SHORT).show()
-                );
+                                Snackbar.LENGTH_SHORT).show();
+                        });
     }
 
     private void loadRecentComplaints() {

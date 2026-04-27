@@ -46,4 +46,16 @@ public final class AppConstants {
     public static final String FIELD_TIMESTAMP  = "timestamp";
     public static final String FIELD_ROLE       = "role";
     public static final String FIELD_CATEGORY   = "category";
+
+    public static String normalizeRole(String role) {
+        if (role == null) return "";
+        String normalized = role.trim().toLowerCase();
+        if (normalized.contains(ROLE_ADMIN)) return ROLE_ADMIN;
+        if (normalized.contains(ROLE_STUDENT)) return ROLE_STUDENT;
+        return normalized.replaceAll("[^a-z_]", "");
+    }
+
+    public static boolean isAdminRole(String role) {
+        return ROLE_ADMIN.equals(normalizeRole(role));
+    }
 }
